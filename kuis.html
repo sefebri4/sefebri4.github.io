@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuis - Cerdas Mandiri</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+  <div class="logo">
+      <img src="LogoCM.png" alt="Logo Cerdas Mandiri" class="logo-img" />
+      Cerdas Mandiri
+      </div>>
+    <ul class="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="modul.html">Modul</a></li>
+      <li><a href="kuis.html" class="active">Kuis</a></li>
+      <li><a href="progres.html">Progres</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="quiz-page">
+      <h1>Kuis Pemahaman</h1>
+      <form id="quiz-form">
+        <div class="quiz-question">
+          <h3>1. Apa fungsi utama dari internet?</h3>
+          <label><input type="radio" name="q1" value="a"> Tempat menyimpan data offline</label><br>
+          <label><input type="radio" name="q1" value="b"> Menghubungkan perangkat secara global</label><br>
+          <label><input type="radio" name="q1" value="c"> Untuk mencetak dokumen</label>
+        </div>
+
+        <div class="quiz-question">
+          <h3>2. Manakah yang merupakan contoh peramban web?</h3>
+          <label><input type="radio" name="q2" value="a"> Microsoft Word</label><br>
+          <label><input type="radio" name="q2" value="b"> Google Chrome</label><br>
+          <label><input type="radio" name="q2" value="c"> Adobe Photoshop</label>
+        </div>
+
+        <div class="quiz-question">
+          <h3>3. Apa itu phishing?</h3>
+          <label><input type="radio" name="q3" value="a"> Teknik melindungi email</label><br>
+          <label><input type="radio" name="q3" value="b"> Upaya menipu pengguna untuk memberikan data pribadi</label><br>
+          <label><input type="radio" name="q3" value="c"> Cara mengakses berita online</label>
+        </div>
+
+        <button type="submit">Kirim Jawaban</button>
+      </form>
+
+      <div id="quiz-result" class="quiz-result" style="display:none;"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Febrian Steven Se. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('quiz-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const answers = {
+        q1: 'b',
+        q2: 'b',
+        q3: 'b'
+      };
+      let score = 0;
+      let total = 3;
+      for (let q in answers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) score++;
+      }
+      const resultDiv = document.getElementById('quiz-result');
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = `<h2>Hasil Kuis:</h2><p>Skor Anda: ${score} dari ${total}</p>`;
+    });
+  </script>
+</body>
+</html>
